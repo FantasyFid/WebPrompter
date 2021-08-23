@@ -1,0 +1,86 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="./styles/main-style.css">
+    <link rel="stylesheet" href="./styles/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="./scripts/plagins/easyeditor/easyeditor.css">
+    <title>Web Prompter</title>
+</head>
+<body>
+    <header class="main-header">
+        <h1>Web Prompter</h1>
+    </header>
+    <main class="container">
+        <ul id="text-init">
+            <li id="moving-drop-area">
+                <div id="drop-area">
+                    <p class="drop-area-text">Drop text file here or click to upload.</p>
+                    <i class="fa fa-file-text" aria-hidden="true"></i>
+                    <br>
+                    <p id="file-name"></p>
+                    <input type="file" id="file-input" multiple accept="text/*">
+                    <label class="click-area" for="file-input"></label>
+                </div>
+            </li>
+            <li id="moving-edit-area">
+                <div id="edit-area" placeholder="Type your text here..."></div>
+            </li>
+        </ul>
+        <ul class="controls">
+            <li id="edit-text">
+                <div id="edit-text">
+                    Edit text&nbsp;&nbsp;
+                    <i class="fa fa-pencil" aria-hidden="true"></i></li>
+                </div>
+                <div id="upload-text">
+                    Upload text&nbsp;&nbsp;
+                    <i class="fa fa-file-text" aria-hidden="true"></i>
+                </div>
+            <li id="play-text" >
+                <a href="./pages/prompter.html">
+                    Start prompting&nbsp;&nbsp;
+                    <i class="fa fa-angle-right" aria-hidden="true"></i>
+                </a>
+            </li>
+        </ul>
+    </main>
+    <footer>
+        <ul class="main-footer">
+            <li>
+                <h3 class="footer-header">
+                    Download the project for offline use:
+                </h3>
+                <ul>
+                    <li>
+                        <i class="fa fa-github" aria-hidden="true"></i>
+                        <a href="https://github.com/FantasyFid/WebPrompter">Project page on github</a>
+                    </li>
+                    <li>
+                        <i class="fa fa-download" aria-hidden="true"></i>
+                        <a href="./webprompter.zip" download>Direct link</a>
+                    </li>
+                </ul>
+            </li>
+            </li>
+            <li>
+                <h3 class="footer-header">
+                    Contact me:
+                </h3>
+                <ul>
+                    <li>
+                        <i class="fa fa-envelope" aria-hidden="true"></i>
+                        <a href="mailto:Andrey.kursk2002@gmail.com">Andrey.kursk2002@gmail.com</a>
+                    </li>
+                    <li>
+                        <i class="fa fa-telegram" aria-hidden="true"></i>
+                        <a href="https://telegram.me/Andrey_FantasyF">Сontact by telegram</a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </footer>
+    <script src="./scripts/jquery-3.6.0.js"></script>
+    <script src="./scripts/plagins/easyeditor/jquery.easyeditor.js"></script>
+    <script src="./scripts/main-script.js"></script>
+</body>
+</html>

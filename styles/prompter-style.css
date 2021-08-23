@@ -1,0 +1,371 @@
+@font-face {
+    font-family: Montserrat600; /* Имя шрифта */
+    src: url(fonts/Montserrat-SemiBold.ttf); /* Путь к файлу со шрифтом */
+}
+@font-face {
+    font-family: Montserrat300;
+    src: url(fonts/Montserrat-Light.ttf);
+}
+@font-face {
+    font-family: Montserrat800;
+    src: url(fonts/Montserrat-ExtraBold.ttf);
+}
+@font-face {
+    font-family: Montserrat600I;
+    src: url(fonts/Montserrat-SemiBoldItalic.ttf);
+}
+
+:root {
+    --text-font-size: 14px;
+    --text-line-height: 1;
+}
+body {
+    margin: 0;
+    color: white;
+    font-family: Montserrat600, sans-serif;
+    overflow: hidden;
+}
+
+a {
+    color: white;
+    text-decoration: none;
+}
+ul {
+    list-style: none;
+    padding: 0;
+}
+p {
+    margin: 0;
+}
+strong {
+    font-weight: 800;
+    font-family: Montserrat800, sans-serif;
+}
+em {
+    font-family: Montserrat600I, sans-serif;
+}
+br {
+    line-height: 1;
+}
+
+.prompter-object {
+    cursor: default;
+    background-color: rgb(53, 53, 53);
+}
+
+.prompter-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 70vh;
+    font-size: 15vh;
+}
+
+#text {
+    background-color: rgb(33, 33, 33);
+    min-height: 40vh;
+    padding-left: 80px;
+    padding-right: 30px;
+    text-align: left;
+    font-size: var(--text-font-size);
+    line-height: var(--text-line-height);
+}
+#text ul,
+#text li {
+    list-style: disc;
+    margin-left: 30px;
+}
+
+.prompter-footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 70vh;
+    font-size: 15vh;
+}
+
+.controls-panel {
+    display: flex;
+    justify-content: center;
+}
+
+.controls {
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    bottom: 47px;
+    width: auto;
+    height: 100px;
+    border-radius: 25px;
+    background-color: rgb(25, 25, 25);
+    font-size: 50px;
+    transition: bottom 0.7s ease-in-out 0s;
+}
+
+.control-elem {
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-width: 72px;
+    height: 100%;
+    padding: 5px;
+    cursor: pointer;
+}
+
+.control-elem:hover {
+    background-color: rgb(53, 53, 53);
+}
+
+#fullscreen-button {
+    border-top-left-radius: 25px;
+    border-bottom-left-radius: 25px;
+}
+#settings-button {
+    border-top-right-radius: 25px;
+    border-bottom-right-radius: 25px;
+}
+
+.control-text {
+    font-family: Montserrat300, sans-serif;
+    font-size: 14px;
+    text-align: center;
+    padding-top: 5px;
+}
+
+#pointer {
+    position: fixed;
+    left: -50px;
+    top: 300px;
+    height: 100px;
+    width: 100px;
+    transform: rotate(45deg);
+    background-color: rgb(126, 47, 47);
+    cursor: pointer;
+}
+
+#progress-bar {
+    position: fixed;
+    bottom: 0;
+    width: 0%;
+    height: 7px;
+    background-color: rgb(126, 47, 47);
+}
+/*Moving panels*/
+
+.moving-panels {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 250px;
+    height: 40px;
+    background-color: rgb(25, 25, 25);
+    border: 3px solid white;
+    border-radius: 20px;
+    transition: transform 0.5s ease-in-out 0s;
+}
+
+.statement-text {
+    padding: 10px;
+    font-size: 20px;
+    font-family: Montserrat300, sans-serif;
+}
+
+.pin {
+    position: absolute;
+    top: 36px;
+    transform: rotate(45deg);
+    border-right: 2px solid white;
+    border-bottom: 2px solid white;
+    background-color: rgb(25, 25, 25);
+    width: 10px;
+    height: 10px;
+}
+
+
+#moving-lh-panel {
+    position: absolute;
+    top: -50px;
+    transform: scale(0, 0);
+}
+
+#line-height-range {
+    width: 200px;
+    z-index: 3;
+}
+
+#moving-fs-panel {
+    position: absolute;
+    top: -50px;
+    transform: scale(0, 0);
+}
+
+#font-size-range {
+    width: 200px;
+    z-index: 3;
+}
+
+#moving-speed-panel {
+    position: absolute;
+    top: -50px;
+    transform: scale(0, 0);
+}
+
+#speed-range {
+    width: 200px;
+    z-index: 3;
+}
+
+#moving-settings-panel {
+    position: fixed;
+    right: -420px;
+    top: 0;
+    height: 100%;
+    width: 400px;
+    background-color: rgb(53, 53, 53);
+    border-left: 2px solid white;
+    font-size: 30px;
+    font-family: Montserrat300, sans-serif;
+    color: white;
+    cursor: default;
+    transition: right 0.3s linear 0s;
+    z-index: 5;
+}
+.settings-panel-header {
+    height: 60px;
+    text-align: center;
+    background-color: rgb(25, 25, 25);
+}
+.settings-subheaders {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    padding: 5px 0;
+    font-family: Montserrat600, sans-serif;
+    background-color: rgb(25, 25, 25);
+}
+.settings-header-text {
+    font-size: 40px;
+    font-family: Montserrat600, sans-serif;
+    padding-top: 5px;
+    padding-left: 40px;
+}
+#close-settings-button {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 10px;
+    left: 15px;
+    width: 80px;
+    height: 40px;
+    border-radius: 20px;
+    background-color: rgb(126, 47, 47);
+    cursor: pointer;
+}
+
+#blur {
+    background-color: rgba(0,0,0,0.5); 
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 4;
+}
+.checkbox-elem {
+    margin-top: 20px;
+    margin-left: 20px;
+    margin-bottom: 20px;
+}
+
+/* Timer */
+
+#timer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    bottom: 12px;
+    /* margin-left: 475px; */
+    right: 100px;
+    width: 150px;
+    height: 30px;
+    border-radius: 10px;
+    font-family: Montserrat300, sans-serif;
+    font-size: 25px;
+    background-color: rgb(25, 25, 25);
+    color: white;
+    cursor: default;
+    
+}
+
+/*Control buttons*/
+
+#exit-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    bottom: 17px;
+    /* margin-right: 400px; */
+    left: 100px;
+    width: 100px;
+    height: 20px;
+    border-radius: 10px;
+    font-family: Montserrat300, sans-serif;
+    font-size: 14px;
+    background-color: rgb(126, 47, 47);
+    cursor: pointer;
+}
+
+#controls-panel-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    bottom: 17px;
+    width: 200px;
+    height: 20px;
+    border-radius: 10px;
+    background-color: rgb(178, 178, 178);
+    cursor: pointer;
+    transition: transform 0s ease-in-out 0.5s;
+}
+
+#controls-panel-button::before {
+    content: "";
+    margin-top: 98px;
+    margin-left: 8px;
+    height: 100px;
+    width: 50px;
+    border-top: 2px solid white;
+    transform: rotate(10deg);
+}
+#controls-panel-button::after {
+    content: "";
+    margin-top: 98px;
+    margin-left: 17px;
+    height: 100px;
+    width: 50px;
+    border-top: 2px solid white;
+    transform: rotate(-10deg);
+}
+
+#play-button {
+    font-size: 60px;
+}
+
+#pause-button {
+    display: none;
+    font-size: 60px;
+}
+
+/* SCROLL */

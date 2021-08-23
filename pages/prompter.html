@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../styles/prompter-style.css">
+    <link rel="stylesheet" href="../styles/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../styles/input-type-range.css">
+    <link rel="stylesheet" href="../styles/input-type-checkbox.css">
+    <title>Prompter</title>
+</head>
+<body>
+
+    <div class="prompter-object">
+        <div class="prompter-header">Start</div>
+        <div id="text"></div>
+        <div class="prompter-footer" id="bottom">End</div>
+    </div>
+
+    <div id="pointer"></div>
+    
+    <nav class="controls-panel">
+        <ul class="controls">
+            <li class="control-elem" id="fullscreen-button" title="[F11]">
+                <i class="fa fa-arrows-alt" aria-hidden="true"></i>
+                <span class="control-text">Fullscreen</span>
+            </li>
+            <li class="control-elem" id="repeat-button" title="[R]">
+                <i class="fa fa-repeat" aria-hidden="true"></i>
+                <span class="control-text">Repeat</span>
+            </li>
+            <li class="control-elem" id="scroll-up-button" title="[Arrow Up]">
+                <i class="fa fa-angle-double-left" aria-hidden="true"></i>
+                <span class="control-text">Rewind</span>
+            </li>
+            <li class="control-elem" id="scroll-down-button" title="[Arrow Down]">
+                <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+                <span class="control-text">Forward</span>
+            </li>
+            <li class="control-elem" id="statement-button" title="[Space]">
+                <i class="fa fa-play" aria-hidden="true" id="play-button"></i>
+                <i class="fa fa-pause" aria-hidden="true" id="pause-button"></i>
+                <span class="control-text" id="play-pause-text">Play</span>
+            </li>
+            <li class="control-elem" id="line-height-button">
+                <div id="moving-lh-panel" class="moving-panels">
+                    <input type="range" id="line-height-range"  min="1" max="3" step="0.5" value="1">
+                    <span class="statement-text" id="line-height-text"></span>
+                    <div class="pin"></div>
+                </div>
+                <i class="fa fa-arrows-v" aria-hidden="true"></i>
+                <span class="control-text">Line<br>Height</span>
+            </li>
+            <li class="control-elem" id="font-size-button">
+                <div id="moving-fs-panel" class="moving-panels">
+                    <input type="range" id="font-size-range"  min="14" max="190" step="1" value="50">
+                    <span class="statement-text" id="font-size-text"></span>
+                    <div class="pin"></div>
+                </div>
+                <i class="fa fa-text-height" aria-hidden="true"></i>
+                <span class="control-text">Font Size</span>
+            </li>
+            <li class="control-elem" id="speed-button">
+                <div id="moving-speed-panel" class="moving-panels">
+                    <input type="range" id="speed-range"  min="1" max="10" step="1" value="5">
+                    <span class="statement-text" id="speed-text"></span>
+                    <div class="pin"></div>
+                </div>
+                <i class="fa fa-tachometer" aria-hidden="true"></i>
+                <span class="control-text">Speed</span>
+            </li>
+            <li class="control-elem" id="settings-button" title="[S]">
+                <i class="fa fa-cog" aria-hidden="true"></i>
+                <span class="control-text">Settings</span>
+            </li>
+        </ul>
+        <a href="../index.html" id="exit-button" title="[esc]">Exit</a>
+        <div id="controls-panel-button" title="Hide/Show control bar [C]"></div>
+        <div id="timer"></div>
+    </nav>
+    <div id="moving-settings-panel">
+        <div class="settings-panel-header">
+            <div id="close-settings-button">
+                <i class="fa fa-times" aria-hidden="true"></i>
+            </div>
+            <div class="settings-header-text">Settings</div>
+        </div>
+        <ul>
+            <li>
+                <div class="settings-subheaders">Text:</div>
+                <ul>
+                    <li class="checkbox-elem">
+                        <input type="checkbox" id="caps">
+                        <label for="caps">Caps all text</label>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <div class="settings-subheaders">Display:</div>
+                <ul>
+                    <li class="checkbox-elem">
+                        <input type="checkbox" id="vertical-flip">
+                        <label for="vertical-flip">Flip vertical</label>
+                        <input type="checkbox" id="horizontal-flip">
+                        <label for="horizontal-flip">Flip horizontal</label>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <div class="settings-subheaders">Theme:</div>
+                <ul>
+                    <li class="checkbox-elem">
+                        <input type="checkbox" id="high-contrast">
+                        <label for="high-contrast">High contrast</label>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    <div id="progress-bar"></div>
+
+    <script src="../scripts/jquery-3.6.0.js"></script>
+    <script src="../scripts/prompter-script.js" defer></script>
+</body>
+</html>
