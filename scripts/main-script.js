@@ -1,22 +1,31 @@
 $(document).ready(function() {
+    'use strict';
 
-    if (localStorage.getItem('text') != null) {
-        $('#edit-area').html(localStorage.getItem('text'));
-        if ($('#play-text').is(':hidden')) {
-            $('#edit-text').css({
-                'display': 'none',
-                'left': '20px'
-            });
-            $('#upload-text').css('display', 'flex');
-            $('#upload-text').animate({left: '20px'}, 300);
-            setTimeout(() => {
-                $('#play-text').css({
-                    'display': 'flex',
-                    'right': '20px'
-                });
-            }, 300);
+    try {
+        let object = localStorage.getItem("text");
+        object = JSON.parse(object);
+        if (object != null) {
+            if (new Date(Number(object.timestamp) + 1000 * 3600) > new Date().getTime()) {
+                $('#edit-area').html(object.value);
+                if ($('#play-text').is(':hidden')) {
+                    $('#edit-text').css({
+                        'display': 'none',
+                        'left': '20px'
+                    });
+                    $('#upload-text').css('display', 'flex');
+                    $('#upload-text').animate({left: '20px'}, 300);
+                    setTimeout(() => {
+                        $('#play-text').css({
+                            'display': 'flex',
+                            'right': '20px'
+                        });
+                    }, 300);
+                }
+                openEditArea();
+            }
         }
-        openEditArea();
+    } catch (error) {
+        console.log(error);
     }
 
     //text init (setting to the local storage)
@@ -27,11 +36,6 @@ $(document).ready(function() {
         reader.onload = () => {
             let file = reader.result;
             file = file.replaceAll('\n', '<br>');
-/*             let subfile = '';
-            for (let str of file) {
-                subfile += '<p>' + str + '</p>';
-            }
-            file = subfile; */
             $('#edit-area').html(file);
             if ($('#play-text').is(':hidden')) {
                 $('#edit-text').css({
@@ -47,8 +51,9 @@ $(document).ready(function() {
                     });
                 }, 300);
             }
-            openEditArea();        
-            localStorage.setItem('text', file);
+            openEditArea();
+            let object = {value: file, timestamp: new Date().getTime()}       
+            localStorage.setItem('text', JSON.stringify(object));
         }
     }
     /* file-input */
@@ -112,12 +117,6 @@ $(document).ready(function() {
     let observer = new MutationObserver(() => {
         //updating localStorage
         let file = $('#edit-area').html();
-/*         file = file.replace(/\n/g, "<br />"); */
-/*         let subfile = '';
-        for (let str of file) {
-            subfile += '<p>' + str + '</p>';
-        }
-        file = subfile; */
             
         if ($('#play-text').is(':hidden')) {
             $('#edit-text').css({
@@ -133,19 +132,18 @@ $(document).ready(function() {
                 });
             }, 300);
         }       
-        localStorage.setItem('text', file);
+        let object = {value: file, timestamp: new Date().getTime()};     
+        localStorage.setItem('text', JSON.stringify(object));
     });
     observer.observe($('#edit-area').get()[0], {
         childList: true, // наблюдать за непосредственными детьми
         subtree: true, // и более глубокими потомками
         characterDataOldValue: true // передавать старое значение в колбэк
-      });
-
-    function hideColorMP() {
-        $('#change-color-mp').hide();
-        $(document).off('click', hideColorMP);
-    }
+    });
     
+    /* CHANGE COLOR BUTTON */
+
+    //new button initing
     EasyEditor.prototype.changecolor = function(){
         $('#edit-area').on('click', closeColorMP);
 
@@ -185,7 +183,7 @@ $(document).ready(function() {
     
         _this.injectButton(settings);
     };
-
+    //easy editor initing
     $('#edit-area').easyEditor({
         buttons: ['bold', 'italic', 'alignleft', 'aligncenter', 'alignright', 'changecolor', 'list', 'x'],
         buttonsHtml: {
@@ -200,6 +198,7 @@ $(document).ready(function() {
         }
     });
 
+    //change color initing
     $('.toolbar-changecolor').attr('id', 'change-color-button');
     $('#change-color-button').append(`
     <form id="change-color-mp">

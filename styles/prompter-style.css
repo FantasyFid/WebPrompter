@@ -24,6 +24,7 @@ body {
     color: white;
     font-family: Montserrat600, sans-serif;
     overflow: hidden;
+    min-width: 750px;
 }
 
 a {

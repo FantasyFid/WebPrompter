@@ -1,9 +1,13 @@
 $(document).ready(function() {
+    'use strict';
 
     //Text init
     function textInit() {
         try {
-            $('#text').html(localStorage.getItem('text'));
+            let object = localStorage.getItem('text');
+            object = JSON.parse(object);
+
+            $('#text').html(object.value  );
         } catch {(error) => {
                 console.log(error);
             }
@@ -229,9 +233,9 @@ $(document).ready(function() {
         let scrollingUpStatus = true;
 
         if (pauseStatement) {
-            $('#scroll-up-button').on('mouseup', () => {
+            $('#scroll-up-button').on('mouseup touchend', () => {
                 scrollingUpStatus = false;
-                $('#scroll-up-button').off('mouseup');
+                $('#scroll-up-button').off('mouseup touchend');
             });
             $(window).on('keyup', (e) => {
                 if (e.code == 'ArrowUp' && !e.ctrlKey && !e.shiftKey && !e.altKey) {
@@ -246,10 +250,10 @@ $(document).ready(function() {
         } else {
             pauseStatement = true;
 
-            $('#scroll-up-button').on('mouseup', () => {
+            $('#scroll-up-button').on('mouseup touchend', () => {
                 scrollingUpStatus = false;
                 playStatement();
-                $('#scroll-up-button').off('mouseup');
+                $('#scroll-up-button').off('mouseup touchend');
             });
             $(window).on('keyup', (e) => {
                 if (e.code == 'ArrowUp' && !e.ctrlKey && !e.shiftKey && !e.altKey) {
@@ -271,7 +275,7 @@ $(document).ready(function() {
         }
     }
 
-    $('#scroll-up-button').on('mousedown', startScrollUp);
+    $('#scroll-up-button').on('mousedown touchstart', startScrollUp);
     $(window).on('keydown', scrollUpOnKey);
 
     //#scroll-down-button executor
@@ -295,9 +299,9 @@ $(document).ready(function() {
         let scrollingDownStatus = true;
 
         if (pauseStatement) {
-            $('#scroll-down-button').on('mouseup', () => {
+            $('#scroll-down-button').on('mouseup touchend', () => {
                 scrollingDownStatus = false;
-                $('#scroll-down-button').off('mouseup');
+                $('#scroll-down-button').off('mouseup touchend');
             });
             $(window).on('keyup', (e) => {
                 if (e.code == 'ArrowDown' && !e.ctrlKey && !e.shiftKey && !e.altKey) {
@@ -312,10 +316,10 @@ $(document).ready(function() {
         } else {
             pauseStatement = true;
 
-            $('#scroll-down-button').on('mouseup', () => {
+            $('#scroll-down-button').on('mouseup touchend', () => {
                 scrollingDownStatus = false;
                 playStatement();
-                $('#scroll-down-button').off('mouseup');
+                $('#scroll-down-button').off('mouseup touchend');
             });
             $(window).on('keyup', (e) => {
                 if (e.code == 'ArrowDown' && !e.ctrlKey && !e.shiftKey && !e.altKey) {
@@ -337,7 +341,7 @@ $(document).ready(function() {
         }
     }
 
-    $('#scroll-down-button').on('mousedown', startScrollDown);
+    $('#scroll-down-button').on('mousedown touchstart', startScrollDown);
     $(window).on('keydown', scrollDownOnKey);
 
     //This flag contains the information about activ moving panels:
@@ -877,10 +881,7 @@ $(document).ready(function() {
             })
         });
 
-        $('#pointer').on('mousedown', (e) => {
-            e.preventDefault();
-            e.stopPropagation();
-
+        $('#pointer').on('mousedown touchstart', (e) => {
             let shiftY = e.clientY - $('#pointer').get()[0].getBoundingClientRect().top;
             let topBorder = 20;
             let bottomBorder = $(window).height() - 125;
@@ -891,20 +892,14 @@ $(document).ready(function() {
                 }
             }
             function onMouseMove(e) {
-                e.preventDefault();
-                e.stopPropagation();
-
                 moveAt(e.clientY);
             }
 
-            $(document).on('mousemove', onMouseMove);
+            $(document).on('mousemove touchmove', onMouseMove);
 
-            $(document).on('mouseup', (e) => {
-                e.preventDefault();
-                e.stopPropagation();
-
-                $(document).off('mousemove', onMouseMove);
-                $(document).off('mouseup');
+            $(document).on('mouseup touchend', (e) => {
+                $(document).off('mousemove touchmove', onMouseMove);
+                $(document).off('mouseup touchend');
             });
         });
 

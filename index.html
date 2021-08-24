@@ -19,7 +19,7 @@
                     <br>
                     <p id="file-name"></p>
                     <input type="file" id="file-input" multiple accept="text/*">
-                    <label class="click-area" for="file-input"></label>
+                    <label class="click-area" for="file-input" tabindex="1"></label>
                 </div>
             </li>
             <li id="moving-edit-area">
@@ -28,15 +28,15 @@
         </ul>
         <ul class="controls">
             <li id="edit-text">
-                <div id="edit-text">
+                <div id="edit-text" tabindex="2">
                     Edit text&nbsp;&nbsp;
                     <i class="fa fa-pencil" aria-hidden="true"></i></li>
                 </div>
-                <div id="upload-text">
+                <div id="upload-text" tabindex="10">
                     Upload text&nbsp;&nbsp;
                     <i class="fa fa-file-text" aria-hidden="true"></i>
                 </div>
-            <li id="play-text" >
+            <li id="play-text" tabindex="3">
                 <a href="./pages/prompter.html">
                     Start prompting&nbsp;&nbsp;
                     <i class="fa fa-angle-right" aria-hidden="true"></i>
@@ -79,7 +79,7 @@
             </li>
         </ul>
     </footer>
-    <script src="./scripts/jquery-3.6.0.js"></script>
+    <script src="./scripts/plagins/jquery-3.6.0.min.js"></script>
     <script src="./scripts/plagins/easyeditor/jquery.easyeditor.js"></script>
     <script src="./scripts/main-script.js"></script>
 </body>

@@ -64,3 +64,6 @@ input[type="checkbox"]:not(:checked) + label:after {
 input[type="checkbox"]:checked + label:after {
     opacity: 1;
 }
+input[type="checkbox"]:focus {
+    border-color: rgb(126, 47, 47);
+}
