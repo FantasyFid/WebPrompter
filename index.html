@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -19,7 +20,7 @@
                     <br>
                     <p id="file-name"></p>
                     <input type="file" id="file-input" multiple accept="text/*">
-                    <label class="click-area" for="file-input" tabindex="1"></label>
+                    <label class="click-area" for="file-input"></label>
                 </div>
             </li>
             <li id="moving-edit-area">
@@ -27,16 +28,17 @@
             </li>
         </ul>
         <ul class="controls">
-            <li id="edit-text">
-                <div id="edit-text" tabindex="2">
+            <li>
+                <div id="edit-text">
                     Edit text&nbsp;&nbsp;
-                    <i class="fa fa-pencil" aria-hidden="true"></i></li>
+                    <i class="fa fa-pencil" aria-hidden="true"></i>
                 </div>
-                <div id="upload-text" tabindex="10">
+                <div id="upload-text">
                     Upload text&nbsp;&nbsp;
                     <i class="fa fa-file-text" aria-hidden="true"></i>
                 </div>
-            <li id="play-text" tabindex="3">
+            </li>
+            <li id="play-text">
                 <a href="./pages/prompter.html">
                     Start prompting&nbsp;&nbsp;
                     <i class="fa fa-angle-right" aria-hidden="true"></i>

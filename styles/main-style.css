@@ -1,6 +1,8 @@
 @font-face {
     font-family: Montserrat600;
     src: url(fonts/Montserrat-SemiBold.ttf);
+    font-weight: 800;
+    font-style: bold;
 }
 @font-face {
     font-family: Montserrat300;

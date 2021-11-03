@@ -599,8 +599,8 @@ $(document).ready(function() {
             if($('#vertical-flip').is(":checked")) {
                 $('.prompter-object').css('transform', 'scale(-1, -1)');
                 $('#text').css({
-                    'padding-left': '30px',
-                    'padding-right': '80ox'
+                    'padding-left': '80px',
+                    'padding-right': '30ox'
                 });
                 $('#timer').css({
                     'transform': 'scale(-1, -1)',
@@ -618,8 +618,8 @@ $(document).ready(function() {
             } else {
                 $('.prompter-object').css('transform', 'scale(-1, 1)');
                 $('#text').css({
-                    'padding-left': '30px',
-                    'padding-right': '80ox'
+                    'padding-left': '80px',
+                    'padding-right': '30px'
                 });
                 $('#timer').css({
                     'transform': 'scale(-1, 1)',
